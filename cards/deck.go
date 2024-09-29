@@ -12,3 +12,8 @@ func (d deck) print() {
 		fmt.Println(i, card)
 	}
 }
+
+func newDeck() deck {
+	cards := deck{}
+	return cards
+}
