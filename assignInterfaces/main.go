@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -44,13 +45,6 @@ func main() {
 		fmt.Println("Error opening source file:", err)
 		return
 	}
-	bs := make([]byte, 99999)
-	n, err := file.Read(bs)
 
-	if err != nil {
-		fmt.Println("Error reading file:", err)
-		return
-	}
-
-	fmt.Println(string(bs[:n]))
+	io.Copy(os.Stdout, file)
 }
