@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 type shape interface {
 	getArea() float64
@@ -27,10 +30,29 @@ func printArea(s shape) {
 	fmt.Println(s.getArea())
 }
 
+//////////////////////////////////
+
 func main() {
 	t := triangle{height: 10, base: 5}
 	sq := square{side: 4}
 
 	printArea(t)
 	printArea(sq)
+
+	fileName := os.Args[1]
+	file, err := os.Open(fileName)
+
+	if err != nil {
+		fmt.Println("Error opening source file:", err)
+		return
+	}
+	bs := make([]byte, 99999)
+	n, err := file.Read(bs)
+
+	if err != nil {
+		fmt.Println("Error reading file:", err)
+		return
+	}
+
+	fmt.Println(string(bs[:n]))
 }
