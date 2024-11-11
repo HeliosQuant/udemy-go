@@ -30,15 +30,13 @@ func printArea(s shape) {
 	fmt.Println(s.getArea())
 }
 
-//////////////////////////////////
-
 func main() {
 	t := triangle{height: 10, base: 5}
 	sq := square{side: 4}
 
 	printArea(t)
 	printArea(sq)
-
+	//////////////////////////////////
 	fileName := os.Args[1]
 	file, err := os.Open(fileName)
 
