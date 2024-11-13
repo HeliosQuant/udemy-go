@@ -21,13 +21,9 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c) // in this line, the program will still wait a value of c to be displayed
+	for i := 0; i < len(links); i++ {
+		go fmt.Println(<-c)
+	}
 }
 
 func checkLink(link string, c chan string) {
