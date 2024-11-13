@@ -22,6 +22,12 @@ func main() {
 	}
 
 	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c) // in this line, the program will still wait a value of c to be displayed
 }
 
 func checkLink(link string, c chan string) {
